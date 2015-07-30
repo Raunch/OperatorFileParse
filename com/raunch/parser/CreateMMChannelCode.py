@@ -137,6 +137,7 @@ def create_mm_channel(filename):
         if not os.path.exists(sub_folder_name):
             os.mkdir(sub_folder_name)
         shutil.copy(filepath, sub_folder_name)
+        shutil.copy(copyrightfile, sub_folder_name)
         dst_file = sub_folder_name + "/mmiap.xml"
         change_mm_channel(dst_file, mm_value)
         print(dst_file)        
@@ -145,8 +146,9 @@ def create_mm_channel(filename):
     print(nrows)
 
 if __name__ == '__main__':   
-    filepath = sys.argv[1]         
-    mm_xls_file = sys.argv[2]
-    mm_create_folder = sys.argv[3]
+    filepath = sys.argv[1]  
+    copyrightfile = sys.argv[2]       
+    mm_xls_file = sys.argv[3]
+    mm_create_folder = sys.argv[4]
     create_mm_channel(filepath)
     pass
