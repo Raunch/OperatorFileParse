@@ -59,10 +59,10 @@ def generate_dx_file():
         type = dx_sheet.cell_type(i,index_channel_code)
         dx_code = handle_text_value(type, dx_sheet.cell(i,index_channel_code).value)
         #folder_name = dispatch_channle + "_" + dispatch_value
-        folder_name = dispatch_channle + "_" + str(i)
+        folder_name = str(dispatch_channle) + "_" + str(i)
         print folder_name
         
-        print (dispatch_channle + ":" + dispatch_value + ":"+ dx_code)
+        print (str(dispatch_channle) + ":" + dispatch_value + ":"+ dx_code)
         generate_channel_file(folder_name, dx_code)       
     
 
