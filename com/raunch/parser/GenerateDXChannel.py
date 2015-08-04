@@ -52,17 +52,25 @@ def generate_dx_file():
         if i == 0:
             continue
         dispatch_channle = dx_sheet.cell(i,index_channel_number).value
+        channel_type = dx_sheet.cell_type(i, index_channel_number);
+        channle_number_value = handle_text_value(channel_type, dispatch_channle)
+        size = len(channle_number_value)
+        while size < 6:
+            channle_number_value = "0" + channle_number_value
+            size = size + 1
+            
         name_type = dx_sheet.cell_type(i,index_channel_name)
         dispatch_value = handle_text_value(name_type, dx_sheet.cell(i,index_channel_name).value)
+        
         if dispatch_channle == " ":
             continue        
         type = dx_sheet.cell_type(i,index_channel_code)
         dx_code = handle_text_value(type, dx_sheet.cell(i,index_channel_code).value)
         #folder_name = dispatch_channle + "_" + dispatch_value
-        folder_name = str(dispatch_channle) + "_" + str(i)
+        folder_name = channle_number_value + "_" + str(i)
         print folder_name
         
-        print (str(dispatch_channle) + ":" + dispatch_value + ":"+ dx_code)
+        print (channle_number_value + ":" + dispatch_value + ":"+ dx_code)
         generate_channel_file(folder_name, dx_code)       
     
 

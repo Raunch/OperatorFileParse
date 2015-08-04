@@ -127,6 +127,10 @@ def create_mm_channel(filename):
         dispatch_channle = mm_sheet.cell(i,0).value
         dispatch_channle_type = mm_sheet.cell_type(i,0)
         dispatch_channle_value = handle_text_value(dispatch_channle_type, mm_sheet.cell(i,0).value)
+        size = len(dispatch_channle_value)
+        while size < 6:
+            dispatch_channle_value = "0" + dispatch_channle_value
+            size = size + 1
         
         type = mm_sheet.cell_type(i,2)
         mm_value = handle_text_value(type, mm_sheet.cell(i,2).value)
